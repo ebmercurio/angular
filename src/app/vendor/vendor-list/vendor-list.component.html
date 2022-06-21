@@ -1,0 +1,39 @@
+<app-menu></app-menu>
+<div class="headline">
+    <h3>Vendor List</h3>
+</div>
+<a *ngIf="u.isAdmin" routerLink="/vendor/create">Create New | </a>
+
+<input class="searchPage" [(ngModel)]="searchCriteria" placeholder="Search Page">   <!-- two way binding -->
+<table class="table table-striped table-sm">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="vendors">
+        <tr *ngFor="let vendor of vendors | vendorSearch:searchCriteria"> <!--| userSearch:searchCriteria | sort-->
+            <td>{{ vendor.id }}</td>
+            <td>{{ vendor.code }}</td>
+            <td>{{ vendor.name }}</td>
+            <td>{{ vendor.address }}</td>
+            <td>{{ vendor.city }}</td>
+            <td>{{ vendor.state }}</td>
+            <td>{{ vendor.zip }}</td> <!--| boolDisplay-->
+            <td>{{ vendor.phone  }}</td>   <!--| boolDisplay-->
+            <td>{{ vendor.email }}</td> <!--| boolDisplay-->
+            <td>
+                <a routerLink="/vendor/detail/{{vendor.id}}">Detail</a> | <!--make sure first character is a /-->
+                <a *ngIf="u.isAdmin" routerLink="/vendor/edit/{{vendor.id}}">Edit</a> <!--make sure first character is a /-->
+            </td>
+        </tr>
+    </tbody>
+</table>

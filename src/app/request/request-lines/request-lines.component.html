@@ -1,0 +1,66 @@
+<app-menu></app-menu>
+<div class="headline">
+    <h3>Request Lines Maintainence</h3>
+</div>
+<h4>Request</h4>
+<div class="data">
+<table class="table table-striped table-sm" *ngIf="request">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Justification</th>
+            <th>Rejection Reason</th>
+            <th>Delivery Mode</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>User</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> {{ request.id }}</td>
+            <td> {{ request.description }}</td>
+            <td> {{ request.justification }}</td>
+            <td> {{ request.rejectionReason }}</td>
+            <td> {{ request.deliveryMode }}</td>
+            <td class="fw-bold"> {{ request.status }}</td>
+            <td> {{ request.total | currency }}</td>
+            <td> {{ request.user.username }}</td>
+            <td>
+                <button (click)="submit()" class="btn btn-link">Submit for Review</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Requestlines</h3>
+
+<a *ngIf="request" routerLink="/requestline/create/{{request.id}}">Create</a> 
+<table class="table table-striped table-sm" *ngIf="request" >
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Line Total</th>
+        <th>Actions</th>
+    </tr>
+</thead>
+
+<tbody  *ngIf="request && request.requestLines">
+    <tr *ngFor="let requestline of request.requestLines">
+        <td>{{ requestline.id }}</td>
+        <td>{{ requestline.product.name }}</td>
+        <td>{{ requestline.product.price }}</td>
+        <td>{{ requestline.quantity }}</td>
+        <td>{{ requestline.product.price * requestline.quantity }}</td>
+        <button (click)="edit(requestline)" class="btn btn-link">Edit</button>
+        <button (click)="remove(requestline)" class="btn btn-link">Delete</button>
+    </tr>
+</tbody>
+</table>
+<button (click)="back()" class="btn btn-secondary">Back</button>
+</div>

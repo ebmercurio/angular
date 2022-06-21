@@ -1,0 +1,40 @@
+<app-menu></app-menu>
+<div class="headline">
+    <h3>User List</h3>
+</div>
+<div class="data">
+<a *ngIf="u.isAdmin" routerLink="/user/create">Create New | </a>
+
+
+<input class="searchPage" [(ngModel)]="searchCriteria" placeholder="Search Page">   <!-- two way binding -->
+<table class="table table-striped table-sm">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Reviewer</th>
+            <th>Admin</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="users">
+        <tr *ngFor="let user of users | userSearch:searchCriteria "> <!--| userSearch:searchCriteria-->
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.isReviewer | boolDisplay }}</td> <!--| boolDisplay-->
+            <td>{{ user.isAdmin | boolDisplay }}</td>   <!--| boolDisplay-->
+            <td>
+                <a routerLink="/user/detail/{{user.id}}">Detail</a> | <!--make sure first character is a /-->
+                <a *ngIf="u.isAdmin" routerLink="/user/edit/{{user.id}}">Edit</a> <!--make sure first character is a /-->
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>

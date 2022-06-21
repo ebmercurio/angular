@@ -1,0 +1,45 @@
+<app-menu></app-menu>
+<div class="headline">
+<h3>Request Detail</h3>
+</div>
+<div class="data">
+<table class="table table-sm" *ngIf="request">
+    <tbody>
+        <tr>
+            <td>Id</td>
+            <td>{{request.id}}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{request.description}}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{request.description}}</td>
+        </tr>
+        <tr>
+            <td>Justification</td>
+            <td>{{request.justification}}</td>
+        </tr>
+        <tr>
+            <td>Rejection</td>
+            <td>{{request.description}}</td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>{{request.status}}</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td>{{request.total}}</td>
+        </tr>
+        <tr>
+            <td>User</td>
+            <td>{{request.user.username}}</td>
+        </tr>
+    </tbody>
+</table>
+<div>
+    <button (click)="back()" class="btn btn-secondary">Back</button>
+</div>
+</div>

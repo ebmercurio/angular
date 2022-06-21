@@ -1,0 +1,25 @@
+
+<div class="login">
+  <h3>User System</h3>
+</div>
+<div>
+<form class="form_login">
+    <table class="table table-sm">
+        <tr>
+            <td>Username:</td> 
+            <td><input [(ngModel)]="username" name="email"></td> <!--if using form tag, must include name="" for every <input>-->
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input [(ngModel)]="password" type="password" name="password"></td>
+        </tr>
+    </table>
+    <div>
+        <button (click)="login()" class="btn btn-primary">Login</button>
+        <span *ngIf="message" class="text-danger fw=bold"></span>
+    </div>
+    <div class="text-danger fw-bold">
+        {{ message }}
+    </div>
+</form>
+</div>

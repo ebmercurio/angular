@@ -1,0 +1,24 @@
+<app-menu></app-menu>
+
+<table class="table" *ngIf="requestline">
+    <tbody>
+        <tr>
+            <td>Id</td>
+            <td><input [(ngModel)]="requestline.id" disabled name="id"></td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td><input  [(ngModel)]="requestline.quantity" type="number"></td>
+        </tr>
+        <tr>
+            <td>Item</td>
+            <td>
+                <select [(ngModel)]="requestline.productId">
+                    <option *ngFor="let product of product" value="{{ product.id }}">{{ product.name }}</option>
+                </select>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button (click)="save()" class="btn btn-primary">Save</button> | 
+<button (click)="back()" class="btn btn-secondary">Back</button>

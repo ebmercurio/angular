@@ -1,0 +1,51 @@
+<app-menu></app-menu>
+<div class="headline">
+    <h3>Product Detail</h3>
+</div>
+<div class="data">
+<table class="table table-sm" *ngIf="product">
+    <tbody>
+        <tr>
+            <td>Id</td>
+            <td>{{ product.id }}</td>
+        </tr>
+        <tr>
+            <td>PartNbr</td>
+            <td>{{ product.partNbr }}</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{ product.name }}</td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>{{ product.price }}</td>
+        </tr>
+        <tr>
+            <td>Unit</td>
+            <td>{{ product.unit }}</td>
+        </tr>
+        <tr>
+            <td>PhotoPath</td>
+            <td>{{ product.photoPath }}</td>
+        </tr>
+        <tr>
+            <td>VendorId</td>
+            <td>{{ product.vendorId }}</td>
+        </tr>
+        <tr>
+            <td>Vendor</td>
+            <td>
+                {{ product.vendor.name }}
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div>
+    <button (click)="back()" class=" btn btn-secondary">Back</button> |
+    <button (click)="remove()" class="btn btn-danger">Delete</button> | 
+    <span *ngIf="showVerify">
+        <button (click)="verify()" class=" btn btn-danger">Verify Delete</button>
+    </span>
+</div>
+</div>

@@ -1,0 +1,40 @@
+<app-menu></app-menu>
+<div class="headline">
+<h3>Request List</h3>
+</div>
+<div class="data">
+<a routerLink="/request/create">Create New</a> | 
+<input [(ngModel)]="searchCriteria" placeholder="Search">
+<table class="table table-striped table-sm">
+    <thead>
+        <tr>
+            <th><button (click)="sortFn('id')" class="btn btn-link">Id</button></th>
+            <th><button (click)="sortFn('description')" class="btn btn-link">Description</button></th>
+            <th><button (click)="sortFn('justification')" class="btn btn-link">Justification</button></th>
+            <th><button (click)="sortFn('rejectionReason')" class="btn btn-link">Rejection Reason</button></th>
+            <th><button (click)="sortFn('deliveryMode')" class="btn btn-link">Delivery Mode</button></th>
+            <th><button (click)="sortFn('status')" class="btn btn-link">Status</button></th>
+            <th><button (click)="sortFn('total')" class="btn btn-link">Total</button></th>
+            <th><button (click)="sortFn('user')" class="btn btn-link">User</button></th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="requests">
+        <tr *ngFor="let request of requests " > <!--requestSearch:searchCriteria | sort:sortColumn:sortAsc-->
+            <td>{{ request.id }}</td>
+            <td>{{ request.description }}</td>
+            <td>{{ request.justification }}</td>
+            <td>{{ request.rejectionReason }}</td>
+            <td>{{ request.deliveryMode }}</td>
+            <td>{{ request.status }}</td>
+            <td>{{ request.total | currency }}</td>
+            <td>{{ request.user.username }}</td>
+            <td>
+                <a routerLink="/request/detail/{{request.id}}">Detail</a> | <!--make sure first character is a /-->
+                <a routerLink="/request/edit/{{request.id}}">Edit</a> |
+                <a routerLink="/request/lines/{{request.id}}">Lines</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
